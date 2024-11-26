@@ -24,4 +24,5 @@ cleanupPaths.forEach((cleanupPath) => {
 });
 
 console.log("App created successfully!");
-console.log(`\nNext steps:\n  cd ${appName}\n  npm install\n  npm run dev`);
+console.log("\x1b[34m[Tutorial] \x1b[33mhttps://youtu.be/I2FJiK6NFZc")
+console.log(`\nNext steps:\n  cd ${appName}\n  npm install\n  npm run deploy\n  npm run dev`);
