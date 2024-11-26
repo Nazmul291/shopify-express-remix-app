@@ -1,0 +1,12 @@
+[
+    {
+      "from": "/api/admin",
+      "to": "/api/section",
+      "method": "get"
+    },
+    {
+        "from": "/api/admin",
+        "to": "/api/section",
+        "method": "post"
+    }
+]

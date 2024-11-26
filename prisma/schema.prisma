@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Session {
+  id          String       @id
+  shop        String
+  state       String
+  isOnline    Boolean      @default(false)
+  scope       String?
+  expires     DateTime?
+  accessToken String
+}
