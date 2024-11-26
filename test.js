@@ -1,0 +1,1 @@
+console.log("\x1b[34m[hello] \x1b[33mhello world")

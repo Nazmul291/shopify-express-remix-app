@@ -23,5 +23,8 @@ cleanupPaths.forEach((cleanupPath) => {
   fs.rmSync(path.join(appPath, cleanupPath), { recursive: true, force: true });
 });
 
+const tutorial = "https://youtu.be/I2FJiK6NFZc"
+
 console.log("App created successfully!");
-console.log(`\nNext steps:\n  cd ${appName}\n  npm install\n  npm run dev`);
+console.log(`\x1b[34m[Tutorial] \x1b[33m${tutorial}`)
+console.log(`\nNext steps:\n  cd ${appName}\n  npm install\n  npm run deploy\n  npm run dev`);

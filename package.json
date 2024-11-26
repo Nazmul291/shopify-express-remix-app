@@ -1,6 +1,6 @@
 {
   "name": "shopify-express-remix-app",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "A boilerplate for building Shopify apps using Express and Remix",
   "private": true,
   "sideEffects": false,
@@ -60,6 +60,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Nazmul291/shopify-express-remix-app.git"
+  },
+  "bin": {
+    "shopify-express-remix-app": "./bin/create-app.js"
   },
   "keywords": ["shopify", "boilerplate", "shopify-app"],
   "engines": {
