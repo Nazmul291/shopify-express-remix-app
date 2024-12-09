@@ -29,17 +29,7 @@ export default function App() {
         <Link to="/app" rel="home">
           Home
         </Link>
-        <Link to="/app/order">Orders</Link>
-        <Link to="/app/explore">Explore Sections</Link>
         {admin && <Link to="/app/admin">Admin</Link>}
-        {admin && <Link to="/app/section">Section Form</Link>}
-        {admin && <Link to="/app/snippet">Snippet Form</Link>}
-        {admin && <Link to="/app/asset">Asset Form</Link>}
-
-
-
-        <Link to="/app/help">Help Center</Link>
-
       </NavMenu>
       <Outlet />
     </AppProvider>

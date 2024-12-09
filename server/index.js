@@ -25,7 +25,6 @@ import auth from "./middleware/authMiddleware.js"
 import weebhooks from "./routes/webhooks.js"
 import sessionRoutes from "./routes/sessionRoutes.js"
 import userRoutes from "./routes/userRoutes.js"
-import testRoutes from "./routes/testRoutes.js"
 import progressMiddleware from "./middleware/progress.js"
 import SocketManager from './socket/socketManager.js';
 
@@ -51,8 +50,6 @@ app.use(express.urlencoded({ extended: true }));
 // Request forwarder middleware 
 app.use(requestForward.getMiddleware)
 
-// Api test routes
-app.use(testRoutes)
 
 app.get("/api/auth", shopifyOauth.authorize);
 app.get("/api/auth/callback", shopifyOauth.oauthCallback);
