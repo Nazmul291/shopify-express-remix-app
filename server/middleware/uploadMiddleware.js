@@ -5,6 +5,7 @@ import {BindMethods} from "../utility/bindMethods.js"
 
 class FileUploader {
   constructor() {
+    this.filetypes = /jpeg|jpg|png|gif|liquid|js|css/;
     this.uploadDir = './uploads';
     this.storage = multer.diskStorage({
       destination: (req, file, cb) => this.setDestination(req, file, cb),
@@ -32,11 +33,11 @@ class FileUploader {
   }
 
   checkFileType(file, cb) {
-    const filetypes = /jpeg|jpg|png|gif/;
-    const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-    const mimetype = filetypes.test(file.mimetype);
+    
+    const extname = this.filetypes.test(path.extname(file.originalname).toLowerCase());
+    // const mimetype = this.filetypes.test(file.mimetype);
 
-    if (mimetype && extname) {
+    if (extname) {
       cb(null, true);
     } else {
       cb(new Error('Error: Images Only!'));
@@ -50,9 +51,9 @@ class FileUploader {
         if (err) {
           return next(err);
         }
-        if (!req.file) {
-          return next(new Error('No files selected'));
-        }
+        // if (!req.file) {
+        //   return next(new Error('No files selected'));
+        // }
         next();
       });
     };
@@ -74,9 +75,9 @@ class FileUploader {
         if (err) {
           return next(err);
         }
-        if (!req.files || req.files.length === 0) {
-          return next(new Error('No files selected'));
-        }
+        // if (!req.files || req.files.length === 0) {
+        //   return next(new Error('No files selected'));
+        // }
         next();
       });
     };
@@ -89,9 +90,9 @@ class FileUploader {
         if (err) {
           return next(err);
         }
-        if (!req.files || Object.keys(req.files).length === 0) {
-          return next(new Error('No files selected'));
-        }
+        // if (!req.files || Object.keys(req.files).length === 0) {
+        //   return next(new Error('No files selected'));
+        // }
         next();
       });
     };

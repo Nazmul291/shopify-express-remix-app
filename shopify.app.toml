@@ -1,25 +1,25 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "your-shopify-partner-app-api-key"
-name = "your app name"
-handle = "your shopify partner app handle"
-application_url = "https://example.com"
+client_id = "943ee9a2914f95f857c873ea7890f50f"
+name = "section store"
+handle = "mc-section-store"
+application_url = "https://dust-additional-deaf-temple.trycloudflare.com"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
-dev_store_url = "example.myshopify.com"
+dev_store_url = "muscled-production-app-test.myshopify.com"
 include_config_on_deploy = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_products,write_products"
+scopes = "read_inventory,read_products,read_publications,write_inventory,write_products,write_publications"
 
 [auth]
 redirect_urls = [
-  "https://example.com/auth/callback",
-  "https://example.com/auth/shopify/callback",
-  "https://example.com/api/auth/callback"
+  "https://dust-additional-deaf-temple.trycloudflare.com/auth/callback",
+  "https://dust-additional-deaf-temple.trycloudflare.com/auth/shopify/callback",
+  "https://dust-additional-deaf-temple.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]

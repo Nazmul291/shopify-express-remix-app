@@ -1,24 +1,22 @@
-import { json } from "@remix-run/node";
 import { Link, Outlet, useLoaderData, useRouteError } from "@remix-run/react";
 import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
 import { boundary } from "@shopify/shopify-app-remix/server";
 import { AppProvider } from "@shopify/shopify-app-remix/react";
 import translations from "@shopify/polaris/locales/en.json";
 import { NavMenu } from "@shopify/app-bridge-react";
-import cookie from 'cookie';
+
 
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
 
-export const loader = async ({request}) => {
-  const cookies = cookie.parse(request.headers.get('Cookie') || '');
-  const shop = cookies.shop;
-  return json({ apiKey: process.env.SHOPIFY_API_KEY || "", shop });
+export const loader = async ({ context }) => {
+  const { shopSession, admin, apiKey } = context;
+  return { apiKey, shop: shopSession.shop, admin };
 };
 
 export default function App() {
-  const { apiKey, shop } = useLoaderData();
-
+  const { apiKey, shop, admin } = useLoaderData();
+  console.log(admin)
   const appBridgeConfig = {
     apiKey: apiKey,
     shopOrigin: shop,
@@ -31,6 +29,7 @@ export default function App() {
         <Link to="/app" rel="home">
           Home
         </Link>
+        {admin && <Link to="/app/admin">Admin</Link>}
       </NavMenu>
       <Outlet />
     </AppProvider>
