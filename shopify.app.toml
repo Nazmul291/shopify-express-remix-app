@@ -1,9 +1,9 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "943ee9a2914f95f857c873ea7890f50f"
-name = "section store"
-handle = "mc-section-store"
-application_url = "https://dust-additional-deaf-temple.trycloudflare.com"
+client_id = "your-shopify-partner-app-api-key"
+name = "your-shopify-partner-app-name"
+handle = "your-shopify-partner-app-handle"
+application_url = "https://example.com"
 embedded = true
 
 [build]
@@ -17,9 +17,9 @@ scopes = "read_inventory,read_products,read_publications,write_inventory,write_p
 
 [auth]
 redirect_urls = [
-  "https://dust-additional-deaf-temple.trycloudflare.com/auth/callback",
-  "https://dust-additional-deaf-temple.trycloudflare.com/auth/shopify/callback",
-  "https://dust-additional-deaf-temple.trycloudflare.com/api/auth/callback"
+  "https://example.com/auth/callback",
+  "https://example.com/auth/shopify/callback",
+  "https://example.com/api/auth/callback"
 ]
 
 [webhooks]
