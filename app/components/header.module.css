@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: -20px;
+    margin-bottom: 20px;
+    margin-left: -5px;
+    border-bottom: 0.5px solid rgb(224, 219, 219);
+    height: 52px;
+    width: 100%;
+}
+
+.header button {
+    /* padding: 10px 20px; */
+    Padding: 0px, 4px, 0px, 4px;
+    cursor: pointer;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.header button:hover {
+    background-color: transparent;
+    border-radius: 0;
+    border-bottom: 3px solid #097439;
+    /* Change to desired underline color */
+}
+
+.header button.clicked {
+    /* Use a class to keep the button styled */
+    color: red;
+    border-bottom: 3px solid #097439;
+    /* Underline color remains */
+}

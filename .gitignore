@@ -4,3 +4,5 @@ node_modules
 /build
 .env
 shopify.app.dev.toml
+server/uploads
+uploads

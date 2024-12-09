@@ -2,13 +2,6 @@
 
 - 📖 [Remix docs](https://remix.run/docs)
 
-## Create App
-Run the command:
-
-```shellscript
-npx shopify-express-remix-app my-new-app
-```
-
 ## Development
 
 Run the dev server:

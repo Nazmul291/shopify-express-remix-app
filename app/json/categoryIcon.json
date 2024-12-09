@@ -1,0 +1,54 @@
+[
+  {
+    "text": "All Sections",
+    "imgSrc": "/static/assets/navigationIconsImages/Popular1.svg"
+  },
+  {
+    "text": "Trending",
+    "imgSrc": "/static/assets/navigationIconsImages/Trending2.svg"
+  },
+  {
+    "text": "Newest",
+    "imgSrc": "/static/assets/navigationIconsImages/Newest3.svg"
+  },
+  {
+    "text": "Free",
+    "imgSrc": "/static/assets/navigationIconsImages/Free4.svg"
+  },
+  {
+    "text": "Features",
+    "imgSrc": "/static/assets/navigationIconsImages/Features5.svg"
+  },
+  {
+    "text": "Testimonial",
+    "imgSrc": "/static/assets/navigationIconsImages/Testimonial6.svg"
+  },
+  {
+    "text": "Scrolling",
+    "imgSrc": "/static/assets/navigationIconsImages/Scrolling7.svg"
+  },
+  {
+    "text": "Hero",
+    "imgSrc": "/static/assets/navigationIconsImages/Hero8.svg"
+  },
+  {
+    "text": "Video",
+    "imgSrc": "/static/assets/navigationIconsImages/Video9.svg"
+  },
+  {
+    "text": "Text",
+    "imgSrc": "/static/assets/navigationIconsImages/Text10.svg"
+  },
+  {
+    "text": "Images",
+    "imgSrc": "/static/assets/navigationIconsImages/Images11.svg"
+  },
+  {
+    "text": "Snippet",
+    "imgSrc": "/static/assets/navigationIconsImages/Snippet12.svg"
+  },
+  {
+    "text": "View More",
+    "imgSrc": "/static/assets/navigationIconsImages/Others23.svg"
+  }
+]

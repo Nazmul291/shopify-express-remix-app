@@ -1,0 +1,98 @@
+.content Layout {
+    padding-top: -200px !important;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.search-bar {
+    flex: 1;
+}
+
+.sort-button {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.freeTrial {
+    margin-bottom: 20px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 20px; */
+}
+
+.pagination .Polaris-Pagination__Button {
+    background-color: var(--p-pagination-background);
+    border: 1px solid var(--p-pagination-border-color);
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.pagination
+/* .pagination button {
+    margin: 0 10px;
+  } */
+
+
+
+.categoryButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px 12px;
+}
+
+.categoryButton Button {
+    border: 1px solid gray;
+    padding: 8px 12px;
+    border-radius: 0px;
+
+
+}
+
+.categoryButton Button:visited {
+    background-color: black;
+    color: white;
+}
+
+.categoryButton Button:hover {
+    background-color: black;
+    color: white;
+}
+
+.categoryButton Button:active {
+    background-color: black;
+    color: white;
+}
+
+.sort-button img.sort-icon {
+    width: 16px;
+    /* Adjust the size as needed */
+    height: 16px;
+    margin-right: 0px;
+    /* Add some spacing between the icon and the text */
+    vertical-align: middle;
+    /* Align icon with the text */
+}
+
+.custom-pagination {
+    --p-pagination-background: #f0f0f0;
+    /* Change background color */
+    --p-pagination-border-color: #000;
+    /* Change border color */
+}

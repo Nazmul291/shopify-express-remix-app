@@ -12,7 +12,7 @@ class Admin extends ShopifySession{
             this.admin = this.getAdmin(req)
             if(!this.admin) return next(new Error("Admin previlage required"))
         }catch(error){
-            next(error)
+            next()
         }
     }
 }

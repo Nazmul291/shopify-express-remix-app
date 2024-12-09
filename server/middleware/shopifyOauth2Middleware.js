@@ -3,6 +3,7 @@ import prisma from '../config/db.js';
 import crypto from 'crypto';
 import axios from 'axios';
 import {BindMethods} from "../utility/bindMethods.js"
+import {Session} from "../controllers/sessionController.js"
 
 export class ShopifyOauth{
     constructor(){
@@ -14,16 +15,23 @@ export class ShopifyOauth{
         this.shop = null
         this.shopname=null
         this.api_version = process.env.API_VERSION
-        this.base_url = `https://${this.shop}/admin/api/${this.api_version}`
-        this.headers = {
-            'X-Shopify-Access-Token': this.session ? this.session.accessToken : null,
-            'Content-Type': 'application/json',
-        }
+        
     }
 
     generateNonce() {
       return crypto.randomBytes(16).toString('hex');
     };
+
+    reqHeaders(){
+        return {
+          'X-Shopify-Access-Token': this.session ? this.session.accessToken : null,
+          'Content-Type': 'application/json',
+      }
+    }
+
+    baseurl(){
+      return `https://${this.shop}/admin/api/${this.api_version}`
+    }
 
     shopVerify(req){
         this.shop = req.cookies['shop'] || req.query.shop;
@@ -35,17 +43,18 @@ export class ShopifyOauth{
 
     async registerWebhooks(webhookData){
       try {
-        await axios.post(`${this.base_url}/webhooks.json`, webhookData, {
-          headers: this.headers,
+        const response = await axios.post(`${this.baseurl()}/webhooks.json`, webhookData, {
+          headers: this.reqHeaders(),
         });
-    
+
+        return response
       } catch (error) {
+        console.log("error", "webhok register error")
         return "Webhook error is ignored"
       }
     }
     
     async authorize (req, res, next) {
-      console.log("Auth begin")
         try{
 
             this.shopVerify(req)
@@ -63,8 +72,6 @@ export class ShopifyOauth{
               redirect_uri: `${this.app_url }/api/auth/callback`,
               state: state
             });
-        
-            
           
             const authUrl = `https://admin.shopify.com/store/${this.shopname}/oauth/authorize?${queryString}`;
             res.cookie('state', state, { httpOnly: true, secure: true, sameSite: 'None' });
@@ -76,10 +83,8 @@ export class ShopifyOauth{
         }
     }
     async oauthCallback(req, res, next){
-        console.log("req")
         try {
           this.shopVerify(req)
-          console.log("Shop verifyed", this.shop)
           const { code, state } = req.query;
           const stateCookie = req.cookies['state'];
         
@@ -100,19 +105,17 @@ export class ShopifyOauth{
         // Exchange the authorization code for an access token
         const response = await axios.post(`https://${this.shop}/admin/oauth/access_token`
         ,data, { timeout: 10000 });
-    
+          
         const {access_token, scope} = response.data;
         // Save the access token in your database
-        this.session = await prisma.session.upsert({
-          where: { id:`offline_${this.shop}` },
-          update: { accessToken:access_token, scope, state },
-          create: { shop:this.shop, accessToken:access_token, scope, state, id:`offline_${this.shop}` }
-        });
-    
+        const session = new Session()
+        req.body = { shop:this.shop, accessToken:access_token, scope, state, id:`offline_${this.shop}` }
+        this.session = await session.upsert(req)
+
         const webhookData = {
           webhook: {
             topic: 'app/uninstalled',
-            address: `${this.app_url }/api/webhooks/app-uninstalled`,
+            address: `${this.app_url }/api/webhooks/uninstalled/${this.shop}`,
             format: 'json',
           },
         };
@@ -122,7 +125,8 @@ export class ShopifyOauth{
         return res.redirect(`/app?shop="${this.shop}"`);
       } catch (error) {
         console.log(error.message)
-        next(error)
+        // next(error)
+        return res.redirect(`/app?shop="${this.shop}"`);
       }
     }
 }

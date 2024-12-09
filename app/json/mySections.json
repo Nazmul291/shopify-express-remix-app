@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Testimonial #8 (Trustpilot)",
+    "price": "$9",
+    "tag": "testimonial",
+    "imageSrc": "/static/assets/testimonial1.webp",
+    "imageAlt": "Testimonial Thumbnail",
+    "link": "/static/assets/testimonial1.webp",
+    "information1": "Our free FAQ only works with one FAQ pr page.",
+    "information2": "Provide information about this section",
+    "buy": "Get free section"
+  }
+]

@@ -2,7 +2,7 @@
 
 class Logger {
     constructor() {
-      this.appName = "shopify";
+      this.appName = "SS";
       this.debug = process.env.DEBUG === "true";
       this.console_log = console.log;
   

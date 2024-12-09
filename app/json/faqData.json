@@ -1,0 +1,48 @@
+[
+    {
+      "id": 1,
+      "question": "Can I try the section first?",
+      "answer": "Yes, we have recently developed a feature to do this. Navigate to the section you want to try and click Try section. It does not work on all sections yet. So you might not see the button. Be aware that any configurations you make when testing can't be copied to your themes. You will need to reconfigure your settings again."
+    },
+    {
+      "id": 2,
+      "question": "Can I use Section Store with any Shopify theme?",
+      "answer": "Yes, you can use Section Store with any Shopify theme. Simply browse our library, find the section you want, and add it to your theme."
+    },
+    {
+        "id": 3,
+        "question": "Do I need to know how to code to use Section Store?",
+        "answer": "No coding skills required! Section Store is designed to be simple and easy to use. You can customize your sections directly in Shopify’s theme editor."
+    },
+    {
+        "id": 4,
+        "question": "Will adding sections from Section Store slow down my website?",
+        "answer": "No, in fact, it can actually improve your page speed. Some apps can slow down your website, but our library of customizable sections is optimized for performance."
+    },
+    {
+        "id": 5,
+        "question": "What happens if I don't like a section I added from Section Store?",
+        "answer": "The sections are added same way as your existing theme sections through the theme editor. That means you can always remove or replace the section with something else."
+    },
+    {
+        "id": 6,
+        "question": "Can I get a refund?",
+        "answer": "Thank you for purchasing a Shopify section from us. The short is no, but we're happy to exchange the section for you."
+    },
+    {
+        "id": 7,
+        "question": "The section I have added shows on all pages?",
+        "answer": "You're seeing the section on all pages because you've added it to the header/footer area on the page template. When you add sections to these areas, they'll appear on every page."
+    },
+    {
+        "id": 8,
+        "question": "How do I add a section to my store?",
+        "answer": "You can add our Shopify sections just like any other theme sections within Shopify. First you need to add the section to your theme from the apps '🏠 Home' page. Then simply navigate to Shopify's theme editor, and you'll have the option to integrate our sections there with '+add section' button. It's designed to be intuitive and seamless, but if you encounter any challenges, please reach out to us for assistance."
+    },
+    {
+        "id": 9,
+        "question": "How do I uninstall all sections?",
+        "answer": "To remove all sections from your website at once, simply click. Keep in mind that uninstalling will make these sections disappear from your live store immediately. This action cannot be undone, so please ensure you're ready to remove all sections before proceeding."
+    }
+  ]
+  
