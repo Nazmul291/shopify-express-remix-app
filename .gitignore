@@ -6,3 +6,4 @@ node_modules
 shopify.app.dev.toml
 server/uploads
 uploads
+package-lock.json
