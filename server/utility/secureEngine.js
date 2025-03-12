@@ -33,6 +33,9 @@ export class SecurityVerify {
         .digest('base64');
 
       const shopifyHmac = req.headers['x-shopify-hmac-sha256'];
+
+      console.log(req.body.toString('utf-8'))
+      req.body=JSON.parse(req.body.toString('utf-8'))
       
       return crypto.timingSafeEqual(
         Buffer.from(generatedHmac, 'base64'),
