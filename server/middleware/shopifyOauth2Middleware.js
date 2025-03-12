@@ -151,7 +151,7 @@ export class ShopifyOauth {
             format: "json",
           },
         };
-        await registerWebhooks({ session:{ shop, accessToken: access_token }, webhookData });
+        await this.registerWebhooks({ session:{ shop, accessToken: access_token }, webhookData });
       }
 
       return res.redirect(`/app?shop="${this.shop}"`);
