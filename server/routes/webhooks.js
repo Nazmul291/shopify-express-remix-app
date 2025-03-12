@@ -6,9 +6,7 @@ const router = express.Router()
 
 
 //  need to create Admin middleware
-router.post("/uninstalled/:shop",  webhook.deleteMany );
-
-
+router.post("/app-uninstalled",  webhook.deleteMany );
 
 
 export default router
