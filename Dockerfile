@@ -26,6 +26,17 @@ COPY --from=build /app /app
 # Set environment variables
 ENV NODE_ENV=production
 
+# Install OpenSSL 1.1 Compatibility and other dependencies
+RUN apk update && \
+    apk add --no-cache openssl && \
+    ln -s /usr/lib/libssl.so.1.1 /usr/lib/libssl.so && \
+    ln -s /usr/lib/libcrypto.so.1.1 /usr/lib/libcrypto.so && \
+    apk add --no-cache bash && \
+    rm -rf /var/cache/apk/*
+
+# Verify OpenSSL installation
+RUN openssl version
+
 # Expose the application port
 EXPOSE 3001
 

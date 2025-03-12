@@ -84,7 +84,7 @@ app.all("*", (req, res) => {
 
 app.use(errorHandler.handle)
 
-const port = 3001
+const port = process.env.PORT || 3001
 app.listen(port, () => {
   console.log(`App listening on http://localhost:${port}`);
 });
