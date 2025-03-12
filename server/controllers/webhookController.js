@@ -20,8 +20,11 @@ export class Webhook extends SecurityVerify {
                 return processor.error(error)
             }
 
-            const shop = req.params.shop; 
+            const shop = req.body.myshopify_domain;
+            console.log(shop)
             const result = await prisma.session.deleteMany({ where: { shop } });
+
+            console.log("delete session: ", result)
 
             return processor.process({data:result}, 201, "internal server error", 500)
 
