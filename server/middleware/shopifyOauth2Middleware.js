@@ -41,7 +41,7 @@ export class ShopifyOauth {
 
   async registerWebhooks({ session, webhookData }) {
     try {
-      await axios.post(
+      const webHookRes = await axios.post(
         `https://${session.shop}/admin/api/${process.env.API_VERSION}/webhooks.json`,
         webhookData,
         {
@@ -51,6 +51,8 @@ export class ShopifyOauth {
           },
         }
       );
+
+      console.log(webHookRes.data)
     } catch (error) {
       console.error(
         "Error registering app uninstalled webhook:",
