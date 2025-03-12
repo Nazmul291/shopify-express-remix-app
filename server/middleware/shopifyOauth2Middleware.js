@@ -143,11 +143,11 @@ export class ShopifyOauth {
         }
       ];
   
-      for (const webhook of webhooks) {
+      for (let i=0; i<webhooks.length; i++) {
         const webhookData = {
           webhook: {
-            topic: webhook.topic,
-            address: webhook.address,
+            topic: webhooks[i].topic,
+            address: webhooks[i].address,
             format: "json",
           },
         };
