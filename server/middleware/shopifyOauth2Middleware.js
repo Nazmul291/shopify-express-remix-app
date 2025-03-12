@@ -41,18 +41,27 @@ export class ShopifyOauth{
     }
 
 
-    async registerWebhooks(webhookData){
+    async registerWebhooks({ session, webhookData }) {
       try {
-        const response = await axios.post(`${this.baseurl()}/webhooks.json`, webhookData, {
-          headers: this.reqHeaders(),
-        });
-
-        return response
+        await axios.post(
+          `https://${session.shop}/admin/api/${process.env.API_VERSION}/webhooks.json`,
+          webhookData,
+          {
+            headers: {
+              "X-Shopify-Access-Token": session.accessToken,
+              "Content-Type": "application/json",
+            },
+          }
+        );
       } catch (error) {
-        console.log("error", "webhok register error")
-        return "Webhook error is ignored"
+        console.error(
+          "Error registering app uninstalled webhook:",
+          error.response ? error.response.data : error.message
+        );
+      } finally {
+        return "webhook complete";
       }
-    }
+    };
     
     async authorize (req, res, next) {
         try{
@@ -112,15 +121,24 @@ export class ShopifyOauth{
         req.body = { shop:this.shop, accessToken:access_token, scope, state, id:`offline_${this.shop}` }
         this.session = await session.upsert(req)
 
-        const webhookData = {
-          webhook: {
-            topic: 'app/uninstalled',
-            address: `${this.app_url }/api/webhooks/uninstalled/${this.shop}`,
-            format: 'json',
-          },
-        };
+        // Registering webhook
+        const webhooks = [
+          {
+            topic: "app/uninstalled",
+            address: `${process.env.SHOPIFY_APP_URL}/api/webhooks/app-uninstalled`,
+          }
+        ];
     
-        await this.registerWebhooks(webhookData)
+        for (const webhook of webhooks) {
+          const webhookData = {
+            webhook: {
+              topic: webhook.topic,
+              address: webhook.address,
+              format: "json",
+            },
+          };
+          await registerWebhooks({ session, webhookData });
+        }
     
         return res.redirect(`/app?shop="${this.shop}"`);
       } catch (error) {
