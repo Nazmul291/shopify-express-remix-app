@@ -1,10 +1,9 @@
 import express from "express"
-// import admin from "../middleware/adminMiddleware.js"
 import user from "../controllers/userController.js"
 
 const router = express.Router()
 
-// admin.validate,
+// requireAdmin.validate,
 router.get("/", user.getAll)
 
 // admin.validate,

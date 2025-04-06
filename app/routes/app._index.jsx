@@ -21,6 +21,18 @@ export default function Index() {
   const [loading, setLoading] = useState(false);
   const [isAnimated, setIsAnimated] = useState(false);
 
+  const handleClick =async(e)=>{
+    console.log("button clicked")
+    try{
+      const response = await fetch("/api/products")
+      const data = await response.json()
+
+      console.log(data)
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     setIsAnimated(true);
   }, []);

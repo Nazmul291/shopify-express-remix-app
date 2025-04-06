@@ -1,11 +1,11 @@
 import {BindMethods} from "../utility/bindMethods.js"
-import {ShopifyOauth} from "./shopifyOauth2Middleware.js"
+import {ShopifyOauth} from "./shopifyOAuth.js"
 
 class BaseClient extends ShopifyOauth {
     constructor(){
         super()
         this.from_url = "/"
-        this.to_url = `/app?shop="${this.shop}"`
+        this.to_url = `/app?shop=${this.shop}`
     }
 
     path(req, res, next){

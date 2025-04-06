@@ -1,6 +1,6 @@
 import express from "express"
 import uploader from "../middleware/uploadMiddleware.js"
-import admin from "../middleware/adminMiddleware.js" 
+import shopifyOAuth from "../middleware/shopifyOAuth.js" 
 import product from "../controllers/productController.js"
 
 const router = express.Router()
@@ -12,21 +12,21 @@ router.get("/:id", product.get)
 //  need to create Admin middleware
 router.post(
     "/",
-    admin.validate,
+    shopifyOAuth.requireAdmin,
     uploader.multipleFieldsUpload([{ name: "thumbnail", maxCount: 20 }]),
     product.create
   );
 
 router.put(
     "/:id",
-    admin.validate,
+    shopifyOAuth.requireAdmin,
     uploader.multipleFieldsUpload([{ name: "thumbnail", maxCount: 20 }]),
     product.update
   );
 
 router.delete(
     "/:id",
-    admin.validate,
+    shopifyOAuth.requireAdmin,
     product.delete
   );
 
