@@ -1,22 +1,22 @@
 import express from "express"
-import admin from "../middleware/adminMiddleware.js" 
 import sessionController from "../controllers/sessionController.js"
+import shopifyOAuth from "../middleware/shopifyOAuth.js" 
 
 const router = express.Router()
 
-// admin.validate,
+// shopifyOAuth.requireAdmin
 router.get("/", sessionController.getAll)
 
-// admin.validate,
+// shopifyOAuth.requireAdmin
 router.get("/:id", sessionController.get)
 
-// admin.validate,
+// shopifyOAuth.requireAdmin
 router.put(
     "/:id",
     sessionController.update
 );
 
-// admin.validate,
+// shopifyOAuth.requireAdmin
 router.delete(
     "/:id",
     sessionController.delete

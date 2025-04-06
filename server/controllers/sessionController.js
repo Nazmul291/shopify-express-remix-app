@@ -22,7 +22,7 @@ export class Session extends SessionValidator{
     }
 
     async create(req, res, next){
-        const processor = new Return(res, next)
+        const response = new Return(res, next)
         try{
             this.data = req.body
 
@@ -37,14 +37,14 @@ export class Session extends SessionValidator{
                 data: this.data
             })
 
-            return processor.process({data:result}, 201, "internal server error", 500)
+            return response.process({data:result}, 201, "internal server error", 500)
         }catch(error){
-            return processor.error(error)
+            return response.error(error)
         }
     }
 
     async upsert(req, res, next){
-        const processor = new Return(res, next)
+        const response = new Return(res, next)
         try{
             this.data = req.body
 
@@ -66,14 +66,14 @@ export class Session extends SessionValidator{
             })
             
             
-            return processor.process({data:result}, 201, "internal server error", 500)
+            return response.process({data:result}, 201, "internal server error", 500)
         }catch(error){
-            return processor.error(error)
+            return response.error(error)
         }
     }
 
     async getAll(req, res, next){
-        const processor = new Return(res, next)
+        const response = new Return(res, next)
         try{
             this.generateSessionFilter(req)
             // this.sessionFilter 
@@ -86,15 +86,15 @@ export class Session extends SessionValidator{
             });
             const data = {data:result, info:{page: this.page, hasNextPage:true, hasPreviousPage: false}}
 
-            return processor.process(data, 200)
+            return response.process(data, 200)
 
         }catch(error){
-            return processor.error(error)
+            return response.error(error)
         }
     }
 
     async get(req, res, next){
-        const processor = new Return(res, next)
+        const response = new Return(res, next)
         try{
             const id = req.params.id; 
             const result = await prisma.session.findUnique({
@@ -104,15 +104,15 @@ export class Session extends SessionValidator{
                 }
             });
             
-            return processor.process({data:result}, 200)
+            return response.process({data:result}, 200)
 
         }catch(error){
-            return processor.error(error)
+            return response.error(error)
         }
     }
 
     async update(req, res, next){
-        const processor = new Return(res, next)
+        const response = new Return(res, next)
         try{
             const data = req.body
             this.validate(data, 1)
@@ -122,35 +122,35 @@ export class Session extends SessionValidator{
                 data
             });
 
-            return processor.process({data:result}, 201, "internal server error", 500)
+            return response.process({data:result}, 201, "internal server error", 500)
         }catch(error){
-            return processor.error(error)
+            return response.error(error)
         }
     }
 
     async delete(req, res, next){
-        const processor = new Return(res, next)
+        const response = new Return(res, next)
         try{
             const id = req.params.id; 
             const result = await prisma.session.delete({ where:{id} });
 
-            return processor.process({data:result}, 201, "internal server error", 500)
+            return response.process({data:result}, 201, "internal server error", 500)
         }catch(error){
-            return processor.error(error)
+            return response.error(error)
         }
     }
 
     async deleteMany(req, res, next){
-        const processor = new Return(res, next)
+        const response = new Return(res, next)
         try{
             const shop = req.params.shop; 
             console.log(req)
             const result = await prisma.session.deleteMany({ where: { shop } });
 
-            return processor.process({data:result}, 201, "internal server error", 500)
+            return response.process({data:result}, 201, "internal server error", 500)
 
         }catch(error){
-            return processor.error(error)
+            return response.error(error)
         }
     }
 }

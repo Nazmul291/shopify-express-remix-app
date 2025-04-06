@@ -15,4 +15,8 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  server: {
+    allowedHosts: ['dev.katplayer.online', "*"],
+    host: true,
+  },
 });
