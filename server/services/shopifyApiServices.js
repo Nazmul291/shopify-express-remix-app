@@ -20,7 +20,7 @@ export class Shopify{
             if(variables){
                 this.data['variables']=variables
             }
-            const response = await axios.post(`${this.baseUrl}/graphql.json`, data, {
+            const response = await axios.post(`${this.baseUrl}/graphql.json`, this.data, {
                 headers,
               });
             return response
